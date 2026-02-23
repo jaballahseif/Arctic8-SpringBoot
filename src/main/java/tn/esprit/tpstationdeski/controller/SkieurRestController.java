@@ -2,13 +2,17 @@ package tn.esprit.tpstationdeski.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import lombok.*;
 import tn.esprit.tpstationdeski.entity.Skieur;
+import tn.esprit.tpstationdeski.entity.Piste;
 import tn.esprit.tpstationdeski.repository.ISkieurRepo;
 import tn.esprit.tpstationdeski.service.ISkieurService;
 
 import java.util.List;
 
 @RestController
+@AllArgsConstructor
 @RequestMapping("/skieur")
 public class SkieurRestController {
 
@@ -41,5 +45,11 @@ public class SkieurRestController {
     @GetMapping("/{id}")
     Skieur getSkieurById(@PathVariable("id") Long numSkieur) {
         return iSkieurService.getSkieurById(numSkieur);
+    }
+
+    @PutMapping("/{numSkieur}/{numPiste}")
+    public Piste assignSkieurToPiste(@PathVariable("numSkieur") Long numSkieur,
+            @PathVariable("numPiste") Long numPiste) {
+        return iSkieurService.assignSkieurToPiste(numSkieur, numPiste);
     }
 }

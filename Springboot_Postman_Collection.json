@@ -1,0 +1,119 @@
+{
+  "info": {
+    "name": "Springboot",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Springboot",
+      "item": [
+        {
+          "name": "Add Skieur",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nomS\": \"Doe\",\n  \"prenomS\": \"John\",\n  \"dateNaissance\": \"1990-01-01\",\n  \"ville\": \"Paris\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8089/skieur/",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8089",
+              "path": [
+                "skieur",
+                ""
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get All Skieurs",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8089/skieur/Users",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8089",
+              "path": [
+                "skieur",
+                "Users"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Skieur By Id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8089/skieur/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8089",
+              "path": [
+                "skieur",
+                "1"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Update Skieur",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8089/skieur/1/Smith/John",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8089",
+              "path": [
+                "skieur",
+                "1",
+                "Smith",
+                "John"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Delete Skieur",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8089/skieur/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8089",
+              "path": [
+                "skieur",
+                "1"
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

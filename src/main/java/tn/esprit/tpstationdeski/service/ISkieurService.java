@@ -3,6 +3,7 @@ package tn.esprit.tpstationdeski.service;
 import tn.esprit.tpstationdeski.entity.Skieur;
 import tn.esprit.tpstationdeski.entity.Piste;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public interface ISkieurService {
@@ -18,4 +19,11 @@ public interface ISkieurService {
     Skieur getSkieurById(Long numSkieur);
 
     Piste assignSkieurToPiste(Long numSkieur, Long numPiste);
+
+
+    // recherche par num et une tranche dage
+    List<Skieur> getUserByNumSkieurAndDateOfBirth(Long numSkieur, LocalDate dateStart , LocalDate dateEnd);
+
+    void aassignSkieurToSkieurDetails(Long idUser, Long idDetails);
+
 }

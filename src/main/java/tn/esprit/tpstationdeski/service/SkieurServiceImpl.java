@@ -5,10 +5,15 @@ import org.springframework.stereotype.Service;
 import lombok.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import tn.esprit.tpstationdeski.entity.Piste;
 import tn.esprit.tpstationdeski.entity.Skieur;
+import tn.esprit.tpstationdeski.entity.SkieurDetails;
+import tn.esprit.tpstationdeski.repository.ISkieurDetails;
 import tn.esprit.tpstationdeski.repository.ISkieurRepo;
 import tn.esprit.tpstationdeski.repository.IPisteRepo;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -19,6 +24,9 @@ public class SkieurServiceImpl implements ISkieurService {
 
     @Autowired
     IPisteRepo PisteRepo;
+
+    @Autowired
+    ISkieurDetails SkieurDetailsRepo;
 
     @Override
     public Skieur addSkieur(Skieur skieur) {
@@ -54,13 +62,13 @@ public class SkieurServiceImpl implements ISkieurService {
     }
 
     @Override
-    public tn.esprit.tpstationdeski.entity.Piste assignSkieurToPiste(Long numSkieur, Long numPiste) {
+    public Piste assignSkieurToPiste(Long numSkieur, Long numPiste) {
         Skieur skieur = SkieurRepo.findById(numSkieur).orElse(null);
-        tn.esprit.tpstationdeski.entity.Piste piste = PisteRepo.findById(numPiste).orElse(null);
+        Piste piste = PisteRepo.findById(numPiste).orElse(null);
 
         if (skieur != null && piste != null) {
             if (skieur.getPiste() == null) {
-                skieur.setPiste(new java.util.ArrayList<>());
+                skieur.setPiste(new ArrayList<>());
             }
             skieur.getPiste().add(piste);
             SkieurRepo.save(skieur);
@@ -68,4 +76,22 @@ public class SkieurServiceImpl implements ISkieurService {
         }
         return null;
     }
+
+    @Override
+    public List<Skieur> getUserByNumSkieurAndDateOfBirth(Long numSkieur, LocalDate dateStart, LocalDate dateEnd) {
+        return SkieurRepo.findByNumSkieurAfterAndDateNaissanceBetween(numSkieur, dateStart, dateEnd);
+    }
+
+    @Override
+    public void aassignSkieurToSkieurDetails(Long idUser, Long idDetails) {
+        Skieur skieur = SkieurRepo.findById(idUser).orElse(null);
+        SkieurDetails skieurDetails = SkieurDetailsRepo.findById(idDetails).orElse(null);
+        skieurDetails.setSkieur(skieur);
+        SkieurDetailsRepo.save(skieurDetails);
+
+
+
+
+    }
+
 }

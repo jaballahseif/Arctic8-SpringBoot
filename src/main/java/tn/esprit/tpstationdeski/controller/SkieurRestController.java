@@ -9,6 +9,7 @@ import tn.esprit.tpstationdeski.entity.Piste;
 import tn.esprit.tpstationdeski.repository.ISkieurRepo;
 import tn.esprit.tpstationdeski.service.ISkieurService;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -51,5 +52,16 @@ public class SkieurRestController {
     public Piste assignSkieurToPiste(@PathVariable("numSkieur") Long numSkieur,
             @PathVariable("numPiste") Long numPiste) {
         return iSkieurService.assignSkieurToPiste(numSkieur, numPiste);
+    }
+
+
+    @GetMapping("/users/{numSkieur}/{dateStart}/{dateEnd}")
+    public List<Skieur> getUserByNumSkieurAndDateOfBirth(@PathVariable("numSkieur") Long numSkieur, @PathVariable("dateStart") LocalDate dateStart, @PathVariable("dateEnd") LocalDate dateEnd) {
+        return iSkieurService.getUserByNumSkieurAndDateOfBirth(numSkieur, dateStart, dateEnd);
+    }
+
+    @PutMapping("/assign/{idUser}/{idDetails}")
+    public void aassignSkieurToSkieurDetails(@PathVariable("idUser") Long numSkieur, @PathVariable("idDetails") Long idDetails) {
+        iSkieurService.aassignSkieurToSkieurDetails(numSkieur, idDetails);
     }
 }

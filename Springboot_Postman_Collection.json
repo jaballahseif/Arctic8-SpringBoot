@@ -112,6 +112,48 @@
               ]
             }
           }
+        },
+        {
+          "name": "Assign Skieur To Piste",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8089/skieur/1/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8089",
+              "path": [
+                "skieur",
+                "1",
+                "1"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get User By Num Skieur And Date Of Birth",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8089/skieur/users/1/1990-01-01/2000-01-01",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8089",
+              "path": [
+                "skieur",
+                "users",
+                "1",
+                "1990-01-01",
+                "2000-01-01"
+              ]
+            }
+          }
         }
       ]
     }

@@ -33,6 +33,9 @@ public class Skieur {
     @OneToMany(mappedBy = "skieur")
     private List<Inscription> inscriptionsS;
 
+    @OneToMany(mappedBy = "skieur")
+    private Set<SkieurDetails> skieurDetailsS;
+
     public Long getNumSkieur() {
         return numSkieur;
     }
@@ -95,5 +98,9 @@ public class Skieur {
 
     public void setInscriptionsS(List<Inscription> inscriptionsS) {
         this.inscriptionsS = inscriptionsS;
+    }
+
+    public void setSkieurDetailsS(Set<SkieurDetails> skieurDetailsS) {
+        this.skieurDetailsS = skieurDetailsS;
     }
 }
